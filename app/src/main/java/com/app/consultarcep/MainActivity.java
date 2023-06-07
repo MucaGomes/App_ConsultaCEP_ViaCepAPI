@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     CEP result = new HttpService(cepInserted.trim()).execute().get();
                     txtResult.setText(result.toString());
-                } catch (ExecutionException | InterruptedException e) {
+                } catch (ExecutionException e) {
                     e.printStackTrace();
-                    Toast.makeText(getBaseContext(),"Digite um CEP Válido!",Toast.LENGTH_SHORT).show();
+                } catch (InterruptedException e){
+                    e.printStackTrace();
                 }
             }
         });

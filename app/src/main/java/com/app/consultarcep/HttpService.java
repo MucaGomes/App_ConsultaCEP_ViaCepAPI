@@ -45,8 +45,10 @@ public class HttpService extends AsyncTask<Void, Void, CEP> {
                     result.append(scn.next());
                 }
 
-            } catch (IOException e) {
-                throw new RuntimeException(e.getMessage());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
             }
         }
         return new Gson().fromJson(result.toString(), CEP.class);
